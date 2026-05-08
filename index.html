@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dầu Gội Thảo Mộc Herbario - Phục Hồi Tóc Hư Tổn</title>
+    <style>
+        /* === ROOT VARIABLES (Tông Nâu, Xanh lá, Ít Trắng) === */
+        :root {
+            --brown-main: #5C4033;
+            --brown-light: #8B5A2B;
+            --green-main: #2E8B57;
+            --green-light: #4CAF50;
+            --white-bg: #FDFBF7; /* Trắng ngà nhẹ nhàng */
+            --white-pure: #FFFFFF;
+            --text-color: #333333;
+        }
+
+        /* === CƠ BẢN & TỐI ƯU MOBILE === */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: var(--white-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .section-title {
+            text-align: center;
+            color: var(--brown-main);
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        /* === BUTTONS (Nổi bật, Dễ bấm) === */
+        .btn-cta {
+            display: inline-block;
+            background-color: var(--green-main);
+            color: var(--white-pure);
+            padding: 15px 35px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(46, 139, 87, 0.4);
+            animation: pulse 2s infinite;
+        }
+        .btn-cta:hover {
+            background-color: var(--green-light);
+            transform: translateY(-3px);
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* === 1. HERO SECTION (ATTENTION) === */
+        .hero {
+            background: linear-gradient(135deg, var(--brown-main), var(--brown-light));
+            color: var(--white-pure);
+            padding: 80px 0;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: var(--white-pure);
+        }
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+        }
+
+        /* === 2. PROBLEM SECTION (INTEREST) === */
+        .problem {
+            padding: 60px 0;
+            background-color: var(--white-bg);
+        }
+        .problem-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: center;
+        }
+        .problem-text, .problem-img { flex: 1; min-width: 300px; }
+        .problem ul { list-style: none; margin-top: 20px; }
+        .problem ul li {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            padding-left: 30px;
+            position: relative;
+        }
+        .problem ul li::before {
+            content: '⚠️';
+            position: absolute;
+            left: 0;
+        }
+
+        /* === 3. SOLUTION SECTION (DESIRE) === */
+        .solution {
+            padding: 60px 0;
+            background-color: rgba(46, 139, 87, 0.1);
+            border-top: 3px solid var(--green-main);
+            border-bottom: 3px solid var(--green-main);
+        }
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+        .solution-box {
+            background: var(--white-pure);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid var(--green-light);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .solution-box h3 { color: var(--green-main); margin: 15px 0; }
+
+        /* === 4. SOCIAL PROOF (DESIRE/ACTION) === */
+        .social-proof { padding: 60px 0; }
+        .proof-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .review-card {
+            background: var(--white-pure);
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+        }
+        .stars { color: #FFD700; font-size: 1.2rem; margin-bottom: 10px; }
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        .badge {
+            background: var(--brown-main);
+            color: var(--white-pure);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        /* === 5. FAQ SECTION (ACTION PREP) === */
+        .faq { padding: 60px 0; background-color: var(--white-bg); }
+        .faq-item {
+            background: var(--white-pure);
+            border: 1px solid var(--brown-light);
+            margin-bottom: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .faq-question {
+            padding: 15px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            background: var(--brown-light);
+            color: var(--white-pure);
+            display: flex;
+            justify-content: space-between;
+        }
+        .faq-answer {
+            padding: 15px 20px;
+            display: none;
+            border-top: 1px solid #ddd;
+        }
+
+        /* === 6. CTA & FORM SECTION (ACTION) === */
+        .cta-section {
+            padding: 60px 0;
+            background: var(--green-main);
+            color: var(--white-pure);
+        }
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: var(--white-pure);
+            padding: 30px;
+            border-radius: 10px;
+            color: var(--text-color);
+        }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-weight: bold; margin-bottom: 5px; color: var(--brown-main);}
+        .form-group input, .form-group select {
+            width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px;
+        }
+        .form-btn { width: 100%; }
+
+        /* === THANK YOU PAGE === */
+        #thank-you-page {
+            display: none;
+            text-align: center;
+            padding: 100px 20px;
+            min-height: 100vh;
+            background: var(--white-bg);
+        }
+        #thank-you-page h1 { color: var(--green-main); font-size: 3rem; margin-bottom: 20px;}
+        #thank-you-page p { font-size: 1.2rem; margin-bottom: 30px;}
+
+        /* === CHATBOT AI WIDGET === */
+        .chatbot-widget {
+            position: fixed; bottom: 20px; right: 20px; z-index: 1000;
+        }
+        .chat-btn {
+            background: var(--brown-main); color: var(--white-pure);
+            width: 60px; height: 60px; border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            font-size: 1.5rem; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            border: 2px solid var(--green-light);
+        }
+        .chat-window {
+            display: none; width: 320px; height: 400px;
+            background: var(--white-pure); position: absolute;
+            bottom: 70px; right: 0; border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2); flex-direction: column;
+            border: 1px solid var(--brown-light); overflow: hidden;
+        }
+        .chat-header {
+            background: var(--brown-main); color: var(--white-pure);
+            padding: 15px; font-weight: bold; display: flex; justify-content: space-between;
+        }
+        .chat-header span.close-chat { cursor: pointer; }
+        .chat-body { flex: 1; padding: 15px; overflow-y: auto; background: #f9f9f9; display: flex; flex-direction: column; gap: 10px; }
+        .msg { padding: 10px; border-radius: 10px; max-width: 80%; font-size: 0.9rem; }
+        .msg.bot { background: rgba(46, 139, 87, 0.2); align-self: flex-start; color: var(--brown-main); border: 1px solid var(--green-light);}
+        .msg.user { background: var(--brown-light); color: var(--white-pure); align-self: flex-end; }
+        .chat-input { display: flex; border-top: 1px solid #ddd; }
+        .chat-input input { flex: 1; padding: 10px; border: none; outline: none; }
+        .chat-input button { background: var(--green-main); color: var(--white-pure); border: none; padding: 0 15px; cursor: pointer; }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .section-title { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="main-landing-page">
+
+    <header class="hero">
+        <div class="container">
+            <h1>TÁI SINH MÁI TÓC VỚI DẦU GỘI THẢO MỘC HERBARIO</h1>
+            <p>Giải pháp Thuần Chay 100% - Giảm gãy rụng, kích thích mọc tóc và đánh bay gàu ngứa chỉ sau 14 ngày!</p>
+            <a href="#order-form" class="btn-cta">Nhận Ưu Đãi Giảm 30% Ngay Hôm Nay</a>
+        </div>
+    </header>
+
+    <section class="problem">
+        <div class="container">
+            <h2 class="section-title">Nỗi Ám Ảnh Về Mái Tóc Của Bạn?</h2>
+            <div class="problem-content">
+                <div class="problem-img" style="text-align: center; background: #eee; padding: 50px; border-radius: 10px; border: 1px dashed var(--brown-main);">
+                    <p style="color: #666;">[Hình ảnh: Mái tóc thưa, khô xơ, rụng nhiều trên lược]</p>
+                </div>
+                <div class="problem-text">
+                    <p>Dùng nhiều loại dầu gội hóa chất nhưng tình trạng không thuyên giảm? Bạn đang gặp phải:</p>
+                    <ul>
+                        <li>Tóc gãy rụng từng mảng mỗi khi chải hoặc gội đầu.</li>
+                        <li>Da đầu tiết nhiều dầu, gàu trắng xóa gây ngứa ngáy, tự ti.</li>
+                        <li>Tóc khô xơ, chẻ ngọn, mất đi độ bóng mượt tự nhiên.</li>
+                        <li>Lo ngại hóa chất độc hại ảnh hưởng đến sức khỏe lâu dài.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="solution">
+        <div class="container">
+            <h2 class="section-title">Herbario - Tinh Túy Thảo Mộc, Đánh Thức Vẻ Đẹp Tự Nhiên</h2>
+            <div class="solution-grid">
+                <div class="solution-box">
+                    <div style="height:150px; background:#ddd; margin-bottom:10px;">[Ảnh: Thành phần Bồ Kết, Vỏ Bưởi]</div>
+                    <h3>Thành Phần Thuần Chay</h3>
+                    <p>Chiết xuất 100% từ Bồ kết, Vỏ bưởi và Thảo mộc thiên nhiên. Không Paraben, Không Silicone.</p>
+                </div>
+                <div class="solution-box">
+                    <div style="height:150px; background:#ddd; margin-bottom:10px;">[Ảnh: Nang tóc được phục hồi]</div>
+                    <h3>Nuôi Dưỡng Từ Gốc</h3>
+                    <p>Làm sạch sâu da đầu, cung cấp dưỡng chất nuôi nang tóc chắc khỏe, kích thích mọc tóc con.</p>
+                </div>
+                <div class="solution-box">
+                    <div style="height:150px; background:#ddd; margin-bottom:10px;">[Ảnh: Mái tóc bồng bềnh, bóng mượt]</div>
+                    <h3>Hiệu Quả Vượt Trội</h3>
+                    <p>Mái tóc trở nên bồng bềnh, đen óng và lưu hương thảo mộc thư giãn suốt ngày dài.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="social-proof">
+        <div class="container">
+            <h2 class="section-title">Uy Tín Được Hàng Ngàn Khách Hàng Kiểm Chứng</h2>
+            
+            <div style="display:flex; justify-content:center; gap:20px; margin-bottom: 40px; flex-wrap: wrap;">
+                <div style="width: 300px; height: 200px; background:#eee; text-align:center; padding-top:80px; border: 2px solid var(--green-light);">[Ảnh Before/After Khách hàng 1]</div>
+                <div style="width: 300px; height: 200px; background:#eee; text-align:center; padding-top:80px; border: 2px solid var(--green-light);">[Ảnh Before/After Khách hàng 2]</div>
+            </div>
+
+            <div class="proof-grid">
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Sau 2 tuần dùng Herbario, tóc mình giảm rụng hẳn. Thích nhất là mùi vỏ bưởi rất tự nhiên, gội xong da đầu cực kỳ nhẹ."</p>
+                    <p><strong>- Chị Lan Anh, NV Văn phòng</strong></p>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Sản phẩm thuần chay nên mình rất an tâm khi sử dụng trong thời kỳ mang thai. Tóc con mọc lên lởm chởm luôn."</p>
+                    <p><strong>- Mẹ Bầu Minh Thy</strong></p>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Tóc hết bết dầu, gàu cũng biến mất. Chắc chắn sẽ mua lại và giới thiệu cho bạn bè."</p>
+                    <p><strong>- Anh Hoàng Tú</strong></p>
+                </div>
+            </div>
+
+            <div class="trust-badges">
+                <div class="badge">✔ Chứng Nhận Thuần Chay (Vegan)</div>
+                <div class="badge">✔ Cam Kết Hoàn Tiền 100% Nếu Dị Ứng</div>
+                <div class="badge">✔ Hơn 10.000+ Lượt Yêu Thích</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq">
+        <div class="container" style="max-width: 800px;">
+            <h2 class="section-title">Câu Hỏi Thường Gặp</h2>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">1. Sản phẩm có dùng được cho phụ nữ mang thai không? <span>+</span></div>
+                <div class="faq-answer">Dạ hoàn toàn được. Dầu gội Herbario đạt chứng nhận thuần chay, không chứa hóa chất độc hại, rất an toàn cho mẹ bầu và mẹ bỉm sữa.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">2. Bao lâu thì thấy được hiệu quả giảm rụng tóc? <span>+</span></div>
+                <div class="faq-answer">Tùy cơ địa, nhưng thông thường khách hàng cảm nhận được lượng tóc rụng giảm rõ rệt và tóc tơi mềm hơn sau 10 - 14 ngày sử dụng đều đặn.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">3. Dầu gội có làm khô tóc không? <span>+</span></div>
+                <div class="faq-answer">Không hề! Sản phẩm chứa dưỡng chất từ bồ kết giúp cân bằng độ ẩm. Tuy nhiên, để đạt kết quả tốt nhất, bạn nên kết hợp cùng Dầu xả thảo mộc Herbario.</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section" id="order-form">
+        <div class="container">
+            <h2 class="section-title" style="color: var(--white-pure);">Đặt Hàng Ngay Để Sở Hữu Mái Tóc Khỏe Đẹp</h2>
+            <p style="text-align: center; margin-bottom: 30px; font-size:1.2rem;">Chỉ còn <strong>15 suất</strong> ưu đãi giảm giá 30% trong hôm nay!</p>
+            
+            <div class="form-container">
+                <form id="purchaseForm" onsubmit="submitOrder(event)">
+                    <div class="form-group">
+                        <label>Họ và Tên (*)</label>
+                        <input type="text" required placeholder="Nhập họ tên của bạn">
+                    </div>
+                    <div class="form-group">
+                        <label>Số Điện Thoại (*)</label>
+                        <input type="tel" required placeholder="Nhập số điện thoại để tư vấn">
+                    </div>
+                    <div class="form-group">
+                        <label>Địa Chỉ Giao Hàng (*)</label>
+                        <input type="text" required placeholder="Số nhà, Đường, Phường/Xã, Quận/Huyện, Tỉnh/TP">
+                    </div>
+                    <div class="form-group">
+                        <label>Chọn Số Lượng</label>
+                        <select>
+                            <option>1 Chai 300ml - Giá Ưu Đãi 250.000đ</option>
+                            <option>Combo 2 Chai (Miễn phí ship) - 490.000đ</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-cta form-btn">Xác Nhận Đặt Hàng</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div id="thank-you-page">
+    <div class="container">
+        <h1>🎉 CẢM ƠN BẠN ĐÃ ĐẶT HÀNG!</h1>
+        <p>Hệ thống đã ghi nhận thông tin đăng ký mua Dầu Gội Thảo Mộc Herbario của bạn.</p>
+        <p>Chuyên viên chăm sóc khách hàng của chúng tôi sẽ gọi điện xác nhận đơn hàng trong vòng <strong>24 giờ</strong> tới.</p>
+        <p><i>Chúc bạn sớm sở hữu mái tóc chắc khỏe, suôn mượt như ý!</i></p>
+        <button onclick="location.reload()" class="btn-cta" style="margin-top: 20px;">Quay Lại Trang Chủ</button>
+    </div>
+</div>
+
+<div class="chatbot-widget">
+    <div class="chat-btn" onclick="toggleChat()">💬</div>
+    <div class="chat-window" id="chatWindow">
+        <div class="chat-header">
+            Trợ Lý AI Herbario
+            <span class="close-chat" onclick="toggleChat()">✖</span>
+        </div>
+        <div class="chat-body" id="chatBody">
+            <div class="msg bot">Chào bạn! Mình là AI hỗ trợ 24/7 của Herbario. Bạn cần tìm hiểu về <strong>Giá thành</strong>, <strong>Công dụng</strong>, <strong>Thông tin</strong> hay <strong>Cách đặt hàng</strong> ạ?</div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="userInput" placeholder="Nhập câu hỏi..." onkeypress="handleEnter(event)">
+            <button onclick="sendMessage()">Gửi</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 1. FAQ Toggle
+    function toggleFaq(element) {
+        let answer = element.nextElementSibling;
+        let icon = element.querySelector('span');
+        if (answer.style.display === "block") {
+            answer.style.display = "none";
+            icon.innerText = "+";
+        } else {
+            answer.style.display = "block";
+            icon.innerText = "-";
+        }
+    }
+
+    // 2. Chuyển hướng Form sang Thank You Page
+    function submitOrder(event) {
+        event.preventDefault(); // Ngăn chặn reload trang
+        document.getElementById('main-landing-page').style.display = 'none';
+        document.getElementById('thank-you-page').style.display = 'block';
+        window.scrollTo(0, 0); // Cuộn lên đầu trang
+    }
+
+    // 3. Logic Chatbot AI (Tư vấn 4 chủ đề cơ bản)
+    function toggleChat() {
+        let chatWin = document.getElementById('chatWindow');
+        chatWin.style.display = chatWin.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    function handleEnter(event) {
+        if (event.key === 'Enter') sendMessage();
+    }
+
+    function sendMessage() {
+        let inputField = document.getElementById('userInput');
+        let text = inputField.value.trim();
+        if (text === "") return;
+
+        appendMessage(text, 'user');
+        inputField.value = '';
+
+        // Giả lập AI delay 1s
+        setTimeout(() => {
+            let reply = getAIReply(text.toLowerCase());
+            appendMessage(reply, 'bot');
+        }, 800);
+    }
+
+    function appendMessage(text, sender) {
+        let chatBody = document.getElementById('chatBody');
+        let msgDiv = document.createElement('div');
+        msgDiv.className = 'msg ' + sender;
+        msgDiv.innerHTML = text;
+        chatBody.appendChild(msgDiv);
+        chatBody.scrollTop = chatBody.scrollHeight; // Cuộn xuống tin nhắn mới nhất
+    }
+
+    function getAIReply(msg) {
+        if (msg.includes("giá") || msg.includes("tiền") || msg.includes("bao nhiêu")) {
+            return "Hiện tại Dầu gội thảo mộc Herbario (300ml) đang có giá ưu đãi đặc biệt: <strong>250.000 VNĐ / chai</strong>. Mua combo 2 chai chỉ còn 490.000 VNĐ và được Freeship ạ!";
+        }
+        if (msg.includes("công dụng") || msg.includes("tác dụng") || msg.includes("hiệu quả")) {
+            return "Sản phẩm giúp: <br>1. Giảm gãy rụng cực kỳ hiệu quả.<br>2. Kích thích mọc tóc con.<br>3. Làm sạch gàu, giảm bết dính nhờ Bồ kết và Vỏ bưởi tự nhiên.";
+        }
+        if (msg.includes("đặt hàng") || msg.includes("mua") || msg.includes("cách nào")) {
+            return "Bạn có thể lướt xuống phần <strong>Form Đăng Ký (màu xanh lá)</strong> ở trang này, điền Họ Tên, SĐT và Địa chỉ, sau đó bấm Xác Nhận Đặt Hàng là được nhé!";
+        }
+        if (msg.includes("thông tin") || msg.includes("thành phần") || msg.includes("thuần chay")) {
+            return "Dầu gội Herbario cam kết 100% thuần chay (Vegan), chiết xuất hoàn toàn từ Bồ kết, Vỏ bưởi và các thảo dược quý. Không chứa Paraben hay Silicone, an toàn cho cả mẹ bầu!";
+        }
+        return "Xin lỗi, AI chưa hiểu rõ ý của bạn. Bạn có thể hỏi các từ khóa như: <strong>Giá</strong>, <strong>Công dụng</strong>, <strong>Thông tin</strong>, <strong>Cách đặt hàng</strong> nhé!";
+    }
+</script>
+
+</body>
+</html>
